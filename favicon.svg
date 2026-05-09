@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Occult World Cup icon">
+  <rect width="64" height="64" rx="13" fill="#050505"/>
+  <circle cx="32" cy="23" r="16.5" fill="none" stroke="#b20710" stroke-width="4.8"/>
+  <path d="M20 30h24v7.5c0 6.3-4.8 11.2-12 11.2s-12-4.9-12-11.2V30Z" fill="#b20710"/>
+  <path d="M18.5 33h-5c.4 8.3 5.2 12.2 11.1 12.7M45.5 33h5c-.4 8.3-5.2 12.2-11.1 12.7" fill="none" stroke="#b20710" stroke-width="4" stroke-linecap="round"/>
+  <path d="M27 50h10v5H27zM23 55h18" stroke="#e0e0e0" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 23c4.1-4.5 11.9-4.5 16 0-4.1 4.4-11.9 4.4-16 0Z" fill="#e0e0e0"/>
+  <circle cx="32" cy="23" r="4.3" fill="#050505"/>
+  <circle cx="33.4" cy="21.8" r="1.5" fill="#b20710"/>
+</svg>
