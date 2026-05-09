@@ -5,6 +5,23 @@ const projectDir = __dirname;
 let urls = [];
 const baseUrl = 'https://occultworldcup.com';
 
+function formatDate(date) {
+    return date.toISOString().split('T')[0];
+}
+
+function priorityFor(relPath) {
+    if (relPath === 'index.html') return '1.0';
+    if (relPath === 'review-readiness.html' || relPath === 'about.html' || relPath === 'contact.html') return '0.8';
+    if (relPath.startsWith('mysteries/')) return '0.8';
+    return '0.7';
+}
+
+function changefreqFor(relPath) {
+    if (relPath === 'index.html' || relPath === 'review-readiness.html') return 'weekly';
+    if (relPath.startsWith('mysteries/') || relPath.startsWith('blog/')) return 'monthly';
+    return 'monthly';
+}
+
 function walkDir(dir) {
     const list = fs.readdirSync(dir);
     list.forEach(file => {
@@ -16,10 +33,13 @@ function walkDir(dir) {
             }
         } else if (file.endsWith('.html')) {
             const relPath = path.relative(projectDir, filePath).replace(/\\/g, '/');
+            const lastmod = formatDate(stat.mtime);
+            const priority = priorityFor(relPath);
+            const changefreq = changefreqFor(relPath);
             if (relPath === 'index.html') {
-                urls.push(`<url><loc>${baseUrl}/</loc><priority>1.0</priority></url>`);
+                urls.push(`<url><loc>${baseUrl}/</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`);
             } else {
-                urls.push(`<url><loc>${baseUrl}/${relPath}</loc><priority>0.8</priority></url>`);
+                urls.push(`<url><loc>${baseUrl}/${relPath}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`);
             }
         }
     });
