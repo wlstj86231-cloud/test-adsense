@@ -12,12 +12,15 @@ function formatDate(date) {
 function priorityFor(relPath) {
     if (relPath === 'index.html') return '1.0';
     if (relPath === 'review-readiness.html' || relPath === 'about.html' || relPath === 'contact.html') return '0.8';
+    if (relPath === 'field-notes/index.html') return '0.9';
+    if (relPath.startsWith('field-notes/')) return '0.75';
     if (relPath.startsWith('mysteries/')) return '0.8';
     return '0.7';
 }
 
 function changefreqFor(relPath) {
     if (relPath === 'index.html' || relPath === 'review-readiness.html') return 'weekly';
+    if (relPath.startsWith('field-notes/')) return 'monthly';
     if (relPath.startsWith('mysteries/') || relPath.startsWith('blog/')) return 'monthly';
     return 'monthly';
 }
